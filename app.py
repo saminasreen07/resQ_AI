@@ -45,7 +45,11 @@ html, body, [data-testid="stApp"] {
 }
 .stApp { background: #080b10 !important; }
 #MainMenu, footer, header { visibility: hidden !important; }
-.block-container { padding: 0 !important; max-width: 100% !important; }
+.block-container { 
+    padding: 2rem 3rem !important; 
+    max-width: 1200px !important; 
+    margin: auto !important;
+}
 section[data-testid="stSidebar"] { display: none !important; }
 
 /* Navbar */
@@ -53,16 +57,31 @@ section[data-testid="stSidebar"] { display: none !important; }
     background: rgba(8,11,16,0.95);
     backdrop-filter: blur(20px);
     border-bottom: 1px solid rgba(232,52,28,0.15);
-    padding: 0 32px;
+
     display: flex;
+    flex-direction: column;   /* stack logo + buttons */
     align-items: center;
-    justify-content: space-between;
-    height: 58px;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    margin-bottom: 0;
+    justify-content: center;
+
+    padding: 14px 20px;
 }
+
+.nav-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-top: 14px;
+}
+            
+.nav-buttons button {
+    min-width: 140px;
+    padding: 12px 18px;
+    border-radius: 14px;
+}
+            
 .nav-brand {
     display: flex;
     align-items: center;
@@ -211,13 +230,14 @@ section[data-testid="stSidebar"] { display: none !important; }
     background: linear-gradient(135deg, #c0251a, #e8341c) !important;
     color: white !important;
     border: none !important;
-    border-radius: 10px !important;
+    border-radius: 12px !important;
     font-family: 'Rajdhani', sans-serif !important;
-    font-size: 1rem !important;
+    font-size: 0.95rem !important;
     font-weight: 700 !important;
     letter-spacing: 1px !important;
-    padding: 10px 24px !important;
-    width: 100% !important;
+    padding: 12px 26px !important;
+    width: auto !important;   /* THIS FIXES STRETCHING */
+    min-width: 160px !important;
     transition: all 0.2s !important;
 }
 .stButton > button:hover {
@@ -244,6 +264,75 @@ label { color: #94a3b8 !important; font-size: 0.85rem !important; }
 
 /* Hide Streamlit branding */
 [data-testid="stDecoration"] { display: none !important; }
+            
+@media (max-width: 768px) {
+
+    .nav-buttons {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .nav-buttons button {
+        width: 100%;
+        max-width: 320px;
+    }
+
+}
+
+/* ─── NAV BUTTON CENTER FIX ─── */
+
+div[data-testid="stHorizontalBlock"] {
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 16px !important;
+}
+
+div[data-testid="stHorizontalBlock"] > div {
+    display: flex !important;
+    justify-content: center !important;
+}
+
+/* BUTTON STYLE */
+.stButton > button {
+    background: linear-gradient(135deg, #c0251a, #e8341c) !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 12px !important;
+    font-family: 'Rajdhani', sans-serif !important;
+    font-size: 0.95rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 1px !important;
+    padding: 12px 26px !important;
+    min-width: 160px !important;
+    width: auto !important;
+    transition: all 0.2s !important;
+}
+
+.stButton > button:hover {
+    transform: translateY(-1px) !important;
+    box-shadow: 0 6px 24px rgba(232,52,28,0.35) !important;
+}
+
+/* ─── MOBILE RESPONSIVE ─── */
+@media (max-width: 768px) {
+
+    div[data-testid="stHorizontalBlock"] {
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 12px !important;
+    }
+
+    div[data-testid="stHorizontalBlock"] > div {
+        width: 100% !important;
+        max-width: 320px !important;
+    }
+
+    .stButton > button {
+        width: 100% !important;
+    }
+}
+
+
 </style>
 """, unsafe_allow_html=True)
 
@@ -266,22 +355,26 @@ st.markdown(f"""
 """, unsafe_allow_html=True)
 
 # ── Nav buttons ───────────────────────────────────────────────────────────────
-nb1, nb2, nb3, nb4, nb5 = st.columns([2,1,1,1,1])
-with nb2:
-    if st.button("🏠 Home", key="nav_home"):
+left, c1, c2, c3, c4, right = st.columns([2,1,1,1,1,2])
+
+with c1:
+    if st.button("🏠 Home", key="nav_home", use_container_width=True):
         st.session_state["page"] = "home"
         st.rerun()
-with nb3:
-    if st.button("🚨 Report", key="nav_report"):
+
+with c2:
+    if st.button("🚨 Report", key="nav_report", use_container_width=True):
         st.session_state["page"] = "citizen"
         st.session_state["form_step"] = 1
         st.rerun()
-with nb4:
-    if st.button("🛡️ Authority", key="nav_auth"):
+
+with c3:
+    if st.button("🛡️ Authority", key="nav_auth", use_container_width=True):
         st.session_state["page"] = "authority"
         st.rerun()
-with nb5:
-    if st.button("🚒 Rescue", key="nav_rescue"):
+
+with c4:
+    if st.button("🚒 Rescue", key="nav_rescue", use_container_width=True):
         st.session_state["page"] = "rescue"
         st.rerun()
 

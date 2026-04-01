@@ -55,56 +55,50 @@ RESOURCE_DATA = [
 
 def _css():
     st.markdown("""<style>
-@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=DM+Sans:wght@300;400;500;600&display=swap');
 .auth-wrap{max-width:1200px;margin:0 auto;padding:0 4px 40px}
-.auth-hero{background:linear-gradient(135deg,#06080f,#0e1520,#06080f);border:1px solid rgba(59,130,246,.2);border-radius:22px;padding:32px 36px;margin-bottom:24px;position:relative;overflow:hidden;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
-.auth-hero::before{content:'';position:absolute;top:-60px;right:-60px;width:280px;height:280px;background:radial-gradient(circle,rgba(59,130,246,.08),transparent 65%);border-radius:50%;pointer-events:none}
-.auth-hero-title{font-family:'Rajdhani',sans-serif;font-size:2rem;font-weight:700;color:#f1f5f9;letter-spacing:2px}
-.auth-hero-sub{font-size:.78rem;color:#475569;letter-spacing:2px;text-transform:uppercase;margin-top:4px}
-.live-indicator{display:flex;align-items:center;gap:8px;background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.25);border-radius:20px;padding:8px 16px}
-.live-dot{width:8px;height:8px;background:#ef4444;border-radius:50%;animation:blink 1.2s infinite}
+.auth-hero{background:linear-gradient(135deg,#0a1928,#0b2b3b);border:1px solid rgba(0,188,212,.2);border-radius:22px;padding:32px 36px;margin-bottom:24px;position:relative;overflow:hidden;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+.auth-hero::before{content:'';position:absolute;top:-60px;right:-60px;width:280px;height:280px;background:radial-gradient(circle,rgba(0,188,212,.08),transparent 65%);border-radius:50%;pointer-events:none}
+.auth-hero-title{font-family:'Plus Jakarta Sans',sans-serif;font-size:2rem;font-weight:700;background:linear-gradient(135deg,#e0f2fe,#bae6fd);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.auth-hero-sub{font-size:.78rem;color:#5f9ea0;letter-spacing:2px;text-transform:uppercase;margin-top:4px}
+.live-indicator{display:flex;align-items:center;gap:8px;background:rgba(0,188,212,.1);border:1px solid rgba(0,188,212,.25);border-radius:20px;padding:8px 16px}
+.live-dot{width:8px;height:8px;background:#4dd0e1;border-radius:50%;animation:blink 1.2s infinite}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
-.live-txt{font-family:'Rajdhani',sans-serif;font-weight:700;font-size:.8rem;color:#ef4444;letter-spacing:1.5px}
-.mc{background:#0d1117;border:1px solid rgba(255,255,255,.07);border-radius:16px;padding:20px 22px;height:100%;position:relative;overflow:hidden}
+.live-txt{font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:.8rem;color:#4dd0e1;letter-spacing:1.5px}
+.mc{background:rgba(15,35,50,0.6);border:1px solid rgba(0,188,212,.15);border-radius:16px;padding:20px 22px;height:100%;position:relative;overflow:hidden}
 .mc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:3px 3px 0 0}
 .mc-red::before{background:linear-gradient(90deg,#ef4444,#dc2626)}
 .mc-orange::before{background:linear-gradient(90deg,#f97316,#ea580c)}
 .mc-yellow::before{background:linear-gradient(90deg,#eab308,#ca8a04)}
 .mc-green::before{background:linear-gradient(90deg,#22c55e,#16a34a)}
-.mc-blue::before{background:linear-gradient(90deg,#3b82f6,#2563eb)}
+.mc-blue::before{background:linear-gradient(90deg,#00bcd4,#0097a7)}
 .mc-purple::before{background:linear-gradient(90deg,#8b5cf6,#7c3aed)}
-.mc-val{font-family:'Rajdhani',sans-serif;font-size:2.1rem;font-weight:700;margin-bottom:4px}
+.mc-val{font-family:'Plus Jakarta Sans',sans-serif;font-size:2.1rem;font-weight:700;margin-bottom:4px}
 .mc-red .mc-val{color:#ef4444}.mc-orange .mc-val{color:#f97316}.mc-yellow .mc-val{color:#eab308}
-.mc-green .mc-val{color:#22c55e}.mc-blue .mc-val{color:#3b82f6}.mc-purple .mc-val{color:#8b5cf6}
-.mc-lbl{font-family:'Rajdhani',sans-serif;font-size:.68rem;color:#475569;text-transform:uppercase;letter-spacing:1.5px}
-.sec-hdr{font-family:'Rajdhani',sans-serif;font-size:1rem;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:2px;margin:20px 0 14px;padding-bottom:8px;border-bottom:1px solid rgba(255,255,255,.06);display:flex;align-items:center;gap:8px}
-.rpt-card{background:#0d1117;border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:16px 18px;margin-bottom:10px;transition:all .2s}
-.rpt-card:hover{border-color:rgba(232,52,28,.25);background:#110d0d}
-.rpt-card.sel{border-color:rgba(232,52,28,.45);background:#130908}
-.s-badge{display:inline-block;padding:3px 12px;border-radius:10px;font-family:'Rajdhani',sans-serif;font-weight:700;font-size:.7rem;letter-spacing:.5px}
-.team-card{background:#0d1117;border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:16px 18px;margin-bottom:10px}
-.team-card.gold{border-color:rgba(234,179,8,.4);background:rgba(234,179,8,.03)}
-.team-card.silver{border-color:rgba(148,163,184,.25)}
-.tweet-card{background:#0d1117;border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:14px 16px;margin-bottom:10px}
-.tweet-card.crit{border-color:rgba(239,68,68,.3)}
-.tweet-card.high{border-color:rgba(249,115,22,.3)}
+.mc-green .mc-val{color:#22c55e}.mc-blue .mc-val{color:#4dd0e1}.mc-purple .mc-val{color:#8b5cf6}
+.mc-lbl{font-family:'Plus Jakarta Sans',sans-serif;font-size:.68rem;color:#5f9ea0;text-transform:uppercase;letter-spacing:1.5px}
+.sec-hdr{font-family:'Plus Jakarta Sans',sans-serif;font-size:1rem;font-weight:700;color:#4dd0e1;text-transform:uppercase;letter-spacing:2px;margin:20px 0 14px;padding-bottom:8px;border-bottom:1px solid rgba(0,188,212,.15);display:flex;align-items:center;gap:8px}
+.rpt-card{background:rgba(15,35,50,0.6);border:1px solid rgba(0,188,212,.15);border-radius:14px;padding:16px 18px;margin-bottom:10px;transition:all .2s}
+.rpt-card:hover{border-color:rgba(0,188,212,.4);background:rgba(15,35,50,0.8)}
+.rpt-card.sel{border-color:#4dd0e1;background:rgba(0,188,212,.1)}
+.s-badge{display:inline-block;padding:3px 12px;border-radius:10px;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:.7rem;letter-spacing:.5px}
+.team-card{background:rgba(15,35,50,0.6);border:1px solid rgba(0,188,212,.15);border-radius:12px;padding:16px 18px;margin-bottom:10px}
+.team-card.gold{border-color:#4dd0e1;background:rgba(0,188,212,.1)}
+.team-card.silver{border-color:rgba(0,188,212,.25)}
+.tweet-card{background:rgba(15,35,50,0.6);border:1px solid rgba(0,188,212,.15);border-radius:12px;padding:14px 16px;margin-bottom:10px}
+.tweet-card.crit{border-color:#ef4444}
+.tweet-card.high{border-color:#f97316}
 .risk-bar-bg{background:#1e293b;border-radius:6px;height:8px;margin-top:6px;overflow:hidden}
 .risk-bar-fill{height:8px;border-radius:6px;transition:width .5s}
-.shelter-card{background:#0d1117;border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:14px 16px;margin-bottom:10px}
-.res-card{background:#0d1117;border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:14px 16px;margin-bottom:10px}
-.map-placeholder{background:#0a0e17;border:1px solid rgba(59,130,246,.15);border-radius:16px;padding:24px;margin:12px 0}
-.activity-feed{background:#0a0e17;border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:16px;max-height:420px;overflow-y:auto}
-.af-item{padding:10px 0;border-bottom:1px solid rgba(255,255,255,.04);display:flex;gap:12px;align-items:flex-start}
+.shelter-card{background:rgba(15,35,50,0.6);border:1px solid rgba(0,188,212,.15);border-radius:12px;padding:14px 16px;margin-bottom:10px}
+.res-card{background:rgba(15,35,50,0.6);border:1px solid rgba(0,188,212,.15);border-radius:12px;padding:14px 16px;margin-bottom:10px}
+.map-placeholder{background:rgba(15,35,50,0.4);border:1px solid rgba(0,188,212,.15);border-radius:16px;padding:24px;margin:12px 0}
+.activity-feed{background:rgba(15,35,50,0.4);border:1px solid rgba(0,188,212,.15);border-radius:14px;padding:16px;max-height:420px;overflow-y:auto}
+.af-item{padding:10px 0;border-bottom:1px solid rgba(0,188,212,.1);display:flex;gap:12px;align-items:flex-start}
 .af-item:last-child{border-bottom:none}
 .af-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;margin-top:4px}
-.login-wrap{max-width:420px;margin:80px auto;background:#0d1117;border:1px solid rgba(59,130,246,.2);border-radius:22px;padding:40px 36px;text-align:center}
-.stTextInput>div>input,.stTextArea>div>textarea{background:#0d1117!important;border:1px solid rgba(255,255,255,.12)!important;color:#e2e8f0!important;border-radius:12px!important;font-size:.9rem!important}
-.stTextInput label,.stSelectbox label,.stTextArea label{color:#94a3b8!important;font-size:.84rem!important;font-weight:500!important}
-.stSelectbox>div>div{background:#0d1117!important;border:1px solid rgba(255,255,255,.12)!important;color:#e2e8f0!important;border-radius:12px!important}
-.stButton>button{background:linear-gradient(135deg,#1d4ed8,#3b82f6)!important;color:white!important;border:none!important;border-radius:12px!important;font-family:'Rajdhani',sans-serif!important;font-weight:700!important;letter-spacing:1px!important;padding:11px 24px!important;width:100%!important;transition:all .2s!important}
-.stButton>button:hover{transform:translateY(-1px)!important;box-shadow:0 6px 22px rgba(59,130,246,.35)!important}
-.stTabs [data-baseweb="tab"]{font-family:'Rajdhani',sans-serif!important;font-weight:600!important;font-size:.88rem!important;color:#64748b!important;padding:10px 18px!important}
-.stTabs [aria-selected="true"]{color:#3b82f6!important;border-bottom-color:#3b82f6!important}
+.login-wrap{max-width:420px;margin:80px auto;background:rgba(15,35,50,0.8);border:1px solid rgba(0,188,212,.25);border-radius:22px;padding:40px 36px;text-align:center}
+.stButton>button{background:linear-gradient(135deg,#00acc1,#0097a7)!important;color:white!important;border:none!important;border-radius:12px!important;font-family:'Plus Jakarta Sans',sans-serif!important;font-weight:700!important;letter-spacing:1px!important;padding:11px 24px!important;width:100%!important;transition:all .2s!important}
+.stButton>button:hover{transform:translateY(-1px)!important;box-shadow:0 6px 22px rgba(0,188,212,.35)!important}
 </style>""", unsafe_allow_html=True)
 
 def show_authority_dashboard():
